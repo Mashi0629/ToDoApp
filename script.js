@@ -52,3 +52,19 @@ taskList.addEventListener('click', function(event) {
     const tasks =getTasksFromLocalStorage();
     tasks.forEach(task => addTask(task));
   }
+
+
+  taskForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+    const taskText = taskInput.value.trim();
+    console.log('Task Input:', taskText); // Debugging line
+    if (taskText === '') {
+      console.error('No task entered');
+      return;
+    }
+    addTask(taskText);
+    saveTaskToLocalStorage(taskText);
+    taskInput.value = '';
+    console.log('Task added successfully'); // Debugging line
+  });
+  
